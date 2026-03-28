@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cardiac-red: #ef4444;
+  --cardiac-dark: #060b14;
+  --cardiac-navy: #0f1729;
+  --cardiac-blue: #1e3a5f;
+  --neon-red: #ff4d4d;
+  --neon-glow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cardiac-dark);
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ECG Line Animation */
+.ecg-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawECG 3s ease-in-out infinite;
+}
+
+@keyframes drawECG {
+  0% { stroke-dashoffset: 1000; opacity: 1; }
+  60% { stroke-dashoffset: 0; opacity: 1; }
+  80% { stroke-dashoffset: 0; opacity: 0.6; }
+  100% { stroke-dashoffset: -1000; opacity: 0; }
+}
+
+/* Heartbeat pulse ring */
+.pulse-ring {
+  animation: pulseRing 2s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Scan line effect */
+.scan-overlay::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, #60a5fa, transparent);
+  animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Glow text */
+.glow-text {
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+.glow-blue {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(15, 23, 41, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #060b14; }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(90deg, #0f1729 25%, #1e3a5f 50%, #0f1729 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Risk badge glow */
+.risk-critical { box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); }
+.risk-high { box-shadow: 0 0 20px rgba(249, 115, 22, 0.5); }
+.risk-low { box-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+
+/* Probability bar fill animation */
+.prob-bar { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* Upload zone hover */
+.upload-zone {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(15,23,41,0.9), rgba(30,58,95,0.3));
+}
+.upload-zone:hover, .upload-zone.dragging {
+  background: linear-gradient(135deg, rgba(30,58,95,0.6), rgba(59,130,246,0.2));
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  transform: scale(1.01);
+}
+
+/* Range indicator bar */
+.range-bar {
+  position: relative;
+  height: 6px;
+  background: #1e3a5f;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.range-indicator {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: white;
+  border-radius: 50%;
+  top: -3px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+  transition: left 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
