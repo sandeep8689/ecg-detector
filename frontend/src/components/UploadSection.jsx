@@ -99,7 +99,7 @@ export default function UploadSection({ setResult, loading, setLoading, error, s
       const formData = new FormData()
       formData.append('file', uploadedFile)
 
-      const response = await axios.post('/api/analyze', formData, {
+      const response = await axios.post('https://ecg-detector-q67.onrender.com/api/analyze', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         timeout: 60000
       })
