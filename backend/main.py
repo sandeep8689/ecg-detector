@@ -11,8 +11,8 @@ from fastapi.staticfiles import StaticFiles
 import os
 
 # ✅ Import routers
-from routes.analyze import router as analyze_router
-from routes.report import router as report_router
+from backend.routes.analyze import router as analyze_router
+from backend.routes.report import router as report_router
 
 # ✅ Initialize FastAPI app
 app = FastAPI(

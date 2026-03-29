@@ -196,7 +196,7 @@ This project is for **educational and research purposes only**. It is NOT a cert
 
 ## 👨‍💻 Author
 
-Built by [Your Name] | B.Tech CSE | [Your College]
+Built by Badavath Sandeep | B.Tech CSE | KGRCETs
 
 **Skills demonstrated:** PyTorch • Transfer Learning • EfficientNet • Grad-CAM • FastAPI • React • Tailwind CSS • Computer Vision • Medical AI
 
